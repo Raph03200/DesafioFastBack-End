@@ -9,7 +9,7 @@ namespace DesafioFast.Controllers
     public class PresencaController : ControllerBase
     {
         readonly PresencaInterface _presencaInterface;
-        public PresencaController(IPresencaInterface _presencaInterface)
+        public PresencaController(PresencaInterface _presencaInterface)
         {
             this._presencaInterface = _presencaInterface;
         }
@@ -19,7 +19,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<List<PresencaModel>> response = await _presencaInterface.GetAllPresencas();
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -31,7 +31,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<PresencaModel> response = await _presencaInterface.GetOnePresenca(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -43,7 +43,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<PresencaModel> response = await _presencaInterface.PutPresenca(updatePresenca);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -55,7 +55,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<PresencaModel> response = await _presencaInterface.DeletePresenca(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -67,7 +67,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _presencaInterface.AddColaborador(colaborador_Id, id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -79,7 +79,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _presencaInterface.RemoveColaborador(colaborador_Id, id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -89,9 +89,9 @@ namespace DesafioFast.Controllers
         [HttpGet("GetAllColaboradoresInWorkshop/{workshopId}")]
         public async Task<ActionResult<ServiceResponse<List<ColaboradorModel>>>> GetAllColaboradoresInWorkshop(int workshop_Id)
         {
-            ServiceResponse<List<ColaboradorModel>> response = await _presencaInterface.GetAllColaboradorsInWorkshop(workshop_Id);
+            ServiceResponse<List<ColaboradorModel>> response = await _presencaInterface.GetAllColaboradoresInWorkshop(workshop_Id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }

@@ -24,13 +24,13 @@ namespace DesafioFast.Services
             ServiceResponse<List<PresencaModel>> response = new ServiceResponse<List<PresencaModel>>();
             try
             {
-                response.Data = await _dataContext.DbPresenca.ToListAsync();
-                response.Message = "Lista de dados retornada";
+                response.Dados = await _dataContext.DbPresenca.ToListAsync();
+                response.Mensagem = "Lista de dados retornada";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
 
@@ -45,18 +45,18 @@ namespace DesafioFast.Services
 
                 if (presenca == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Ata de presença não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Ata de presença não encontrada";
 
                     return response;
                 }
-                response.Message = "Dado retornado";
-                response.Data = presenca;
+                response.Mensagem = "Dado retornado";
+                response.Dados = presenca;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -70,8 +70,8 @@ namespace DesafioFast.Services
 
                 if (presenca == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Ata de presença não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Ata de presença não encontrada";
 
                     return response;
                 }
@@ -81,13 +81,13 @@ namespace DesafioFast.Services
 
                 await _dataContext.SaveChangesAsync();
 
-                response.Data = updatePresenca;
-                response.Message = "Dado modificado";
+                response.Dados = updatePresenca;
+                response.Mensagem = "Dado modificado";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -101,8 +101,8 @@ namespace DesafioFast.Services
 
                 if (presenca == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Lista de presença não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Lista de presença não encontrada";
 
                     return response;
                 }
@@ -110,13 +110,13 @@ namespace DesafioFast.Services
                 _dataContext.DbPresenca.Remove(presenca);
                 await _dataContext.SaveChangesAsync();
 
-                response.Message = "Ata deletada";
-                response.Data = presenca;
+                response.Mensagem = "Ata deletada";
+                response.Dados = presenca;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -130,22 +130,22 @@ namespace DesafioFast.Services
                 PresencaModel presenca = _dataContext.DbPresenca.FirstOrDefault(x => x.Id == presencaId);
                 if (presenca == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Ata de presença não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Ata de presença não encontrada";
                     return response;
                 }
                 if (presenca.ColaboradorIds.IndexOf(colaboradorId) != -1)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador já incluso na ata de presença";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador já incluso na ata de presença";
                     return response;
                 }
 
                 ColaboradorModel colaborador = _dataContext.DbColaborador.FirstOrDefault(x => x.Id == colaboradorId);
                 if (colaborador == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador não encontrado";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador não encontrado";
                     return response;
                 }
 
@@ -153,13 +153,13 @@ namespace DesafioFast.Services
                 
                 await _dataContext.SaveChangesAsync();
 
-                response.Message = "Colaborador adicionado a Ata de presença";
-                response.Data = colaborador;
+                response.Mensagem = "Colaborador adicionado a Ata de presença";
+                response.Dados = colaborador;
             }   
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
 
@@ -173,16 +173,16 @@ namespace DesafioFast.Services
                 PresencaModel presenca = _dataContext.DbPresenca.FirstOrDefault(x => x.Id == presencaId);
                 if (presenca == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Ata de presença não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Ata de presença não encontrada";
                     return response;
                 }
 
                 ColaboradorModel colaborador = _dataContext.DbColaborador.FirstOrDefault(x => x.Id == colaboradorId);
                 if (colaborador == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador não encontrada";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador não encontrada";
                     return response;
                 }
 
@@ -190,13 +190,13 @@ namespace DesafioFast.Services
 
                 await _dataContext.SaveChangesAsync();
 
-                response.Message = "Colaborador removido da Ata de presença";
-                response.Data = colaborador;
+                response.Mensagem = "Colaborador removido da Ata de presença";
+                response.Dados = colaborador;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -209,13 +209,13 @@ namespace DesafioFast.Services
                 List<int> colaboradorIds = _dataContext.DbPresenca.First( x => x.WorkshopId == workshopId).ColaboradorIds;
                 List<ColaboradorModel> colaborador = _dataContext.DbColaborador.Where(x => colaboradorIds.Contains(x.Id)).ToList();
                 
-                response.Data = colaborador;
-                response.Message = "Lista de dados retornada";
+                response.Dados = colaborador;
+                response.Mensagem = "Lista de dados retornada";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }

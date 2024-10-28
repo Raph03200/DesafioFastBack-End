@@ -21,13 +21,13 @@ namespace DesafioFast.Services
             ServiceResponse<List<ColaboradorModel>> response = new ServiceResponse<List<ColaboradorModel>>();
             try
             {
-                response.Data = _dataContext.DbColaborador.ToList();
-                response.Message = "Lista de dados retornada";
+                response.Dados = _dataContext.DbColaborador.ToList();
+                response.Mensagem = "Lista de dados retornada";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -39,8 +39,8 @@ namespace DesafioFast.Services
             {
                 if (colaborador == null)
                 {
-                    response.Message = "Dados Inválidos";
-                    response.IsSuccess = false;
+                    response.Mensagem = "Dados Inválidos";
+                    response.Sucesso = false;
 
                     return response;
                 }
@@ -48,13 +48,13 @@ namespace DesafioFast.Services
                 _dataContext.Add(colaborador);
                 await _dataContext.SaveChangesAsync();
 
-                response.Data = colaborador;
-                response.Message = "Dados salvos no banco";
+                response.Dados = colaborador;
+                response.Mensagem = "Dados salvos no banco";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -67,18 +67,18 @@ namespace DesafioFast.Services
                 ColaboradorModel colaborador = _dataContext.DbColaborador.FirstOrDefault(x => x.Id == id);
                 if (colaborador == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador não encontrado";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador não encontrado";
 
                     return response;
                 }
-                response.Data = colaborador;
-                response.Message = "Dados retornados";
+                response.Dados = colaborador;
+                response.Mensagem = "Dados retornados";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -92,23 +92,23 @@ namespace DesafioFast.Services
                 
                 if (colaborador == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador não encontrado";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador não encontrado";
 
                     return response;
                 }
 
-                colaborador.Name = updateColaborador.Name;
+                colaborador.Nome = updateColaborador.Nome;
 
                 await _dataContext.SaveChangesAsync();
 
-                response.Data = updateColaborador;
-                response.Message = "Colaborador modificado";
+                response.Dados= updateColaborador;
+                response.Mensagem = "Colaborador modificado";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -122,8 +122,8 @@ namespace DesafioFast.Services
                 
                 if (colaborador == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Colaborador não encontrado";
+                    response.Sucesso = false;
+                    response.Mensagem = "Colaborador não encontrado";
 
                     return response;
                 }
@@ -131,13 +131,13 @@ namespace DesafioFast.Services
                 _dataContext.DbColaborador.Remove(colaborador);
                 await _dataContext.SaveChangesAsync();
 
-                response.Data = colaborador;
-                response.Message = "Colaborador deletado";
+                response.Dados = colaborador;
+                response.Mensagem = "Colaborador deletado";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }

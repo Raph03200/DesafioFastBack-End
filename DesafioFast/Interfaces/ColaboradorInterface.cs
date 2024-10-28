@@ -8,10 +8,10 @@ namespace DesafioFast.Interfaces
 {
     public interface ColaboradorInterface
     {
-        Task<ResponseModel<List<ColaboradorModel>>> GetAllColaboradores();
-        Task<ResponseModel<ColaboradorModel>> GetOneColaborador(int id);
-        Task<ResponseModel<ColaboradorModel>> PostColaborador(ColaboradorModel colaborador);
-        Task<ResponseModel<ColaboradorModel>> PutColaborador(ColaboradorModel updateColaborador);
-        Task<ResponseModel<ColaboradorModel>> DeleteColaborador(int id);
+        Task<ServiceResponse<List<ColaboradorModel>>> GetAllColaboradores();
+        Task<ServiceResponse<ColaboradorModel>> GetOneColaborador(int id);
+        Task<ServiceResponse<ColaboradorModel>> PostColaborador(ColaboradorModel colaborador);
+        Task<ServiceResponse<ColaboradorModel>> PutColaborador(ColaboradorModel updateColaborador);
+        Task<ServiceResponse<ColaboradorModel>> DeleteColaborador(int id);
     }
 }

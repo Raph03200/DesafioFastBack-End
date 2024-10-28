@@ -23,12 +23,12 @@ namespace DesafioFast.Services
             ServiceResponse<List<WorkshopModel>> response = new ServiceResponse<List<WorkshopModel>>();
             try
             {
-                response.Data = _dataContext.DbWorkshop.ToList();
-                response.Message = "Lista de dados retornada";
+                response.Dados = _dataContext.DbWorkshop.ToList();
+                response.Mensagem = "Lista de dados retornada";
             } catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -40,37 +40,37 @@ namespace DesafioFast.Services
             {
                 if ( workshop == null )
                 {
-                    response.Message = "Dados não informados corretamente";
-                    response.IsSuccess = false;
+                    response.Mensagem = "Dados não informados corretamente";
+                    response.Sucesso = false;
 
                     return response;
                 }
-                WorkshopModel workshopExisting = _dataContext.DbWorkshop.FirstOrDefault(x => x.Name == workshop.Name);
+                WorkshopModel workshopExisting = _dataContext.DbWorkshop.FirstOrDefault(x => x.Nome == workshop.Nome);
                 if( workshopExisting != null)
                 {
-                    response.Message = "Já existe um workshop com esse nome";
-                    response.IsSuccess = false;
+                    response.Mensagem = "Já existe um workshop com esse nome";
+                    response.Sucesso = false;
 
                     return response;
                 }
                 
                 await _dataContext.AddAsync(workshop);
                 await _dataContext.SaveChangesAsync();
-                response.Message = "Workshop salvo no banco";
+                response.Mensagem = "Workshop salvo no banco";
 
-                int workshopId = _dataContext.DbWorkshop.FirstOrDefault(x => x.Name == workshop.Name).Id;
-                RecordModel record = new RecordModel() { WorkshopId = workshopId };
+                int workshopId = _dataContext.DbWorkshop.FirstOrDefault(x => x.Nome == workshop.Nome).Id;
+                PresencaModel record = new PresencaModel() { WorkshopId = workshopId };
 
                 await _dataContext.AddAsync(record);
                 await _dataContext.SaveChangesAsync();
-                response.Message += "\nLista de presença criada no banco" ; 
+                response.Mensagem += "\nLista de presença criada no banco" ; 
 
-                response.Data = workshop;
+                response.Dados = workshop;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -84,18 +84,18 @@ namespace DesafioFast.Services
 
                 if( workshop == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Workshop não existente";
+                    response.Sucesso = false;
+                    response.Mensagem = "Workshop não existente";
 
                     return response;
                 }
-                response.Message = "Dado retornada";
-                response.Data = workshop;
+                response.Mensagem = "Dado retornada";
+                response.Dados = workshop;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -109,24 +109,24 @@ namespace DesafioFast.Services
 
                 if ( workshop == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Workshop não existente";
+                    response.Sucesso = false;
+                    response.Mensagem = "Workshop não existente";
 
                     return response;
                 }
-                workshop.Name = updateWorkshop.Name;
-                workshop.Description = updateWorkshop.Description;
-                workshop.RealizationDate = updateWorkshop.RealizationDate;
+                workshop.Nome = updateWorkshop.Nome;
+                workshop.Descricao = updateWorkshop.Descricao;
+                workshop.DataRealizacao = updateWorkshop.DataRealizacao;
 
                 await _dataContext.SaveChangesAsync();
 
-                response.Data = updateWorkshop;
-                response.Message = "Dado modificado";
+                response.Dados = updateWorkshop;
+                response.Mensagem = "Dado modificado";
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }
@@ -139,8 +139,8 @@ namespace DesafioFast.Services
 
                 if ( workshop == null)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "Workshop não existente";
+                    response.Sucesso = false;
+                    response.Mensagem = "Workshop não existente";
 
                     return response;
                 }
@@ -148,13 +148,13 @@ namespace DesafioFast.Services
                 _dataContext.DbWorkshop.Remove(workshop);
                 await _dataContext.SaveChangesAsync();
 
-                response.Message = "Dado deletado";
-                response.Data = workshop;
+                response.Mensagem = "Dado deletado";
+                response.Dados = workshop;
             }
             catch (Exception ex)
             {
-                response.Message = ex.Message;
-                response.IsSuccess = false;
+                response.Mensagem = ex.Message;
+                response.Sucesso = false;
             }
             return response;
         }

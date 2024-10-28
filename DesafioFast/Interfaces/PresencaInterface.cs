@@ -8,13 +8,13 @@ namespace DesafioFast.Interfaces
 {
     public interface PresencaInterface
     {
-        Task<ResponseModel<List<PresencaModel>>> GetAllPresencas();
-        Task<ResponseModel<PresencaModel>> GetOnePresenca(int id);
-        Task<ResponseModel<PresencaModel>> PutPresenca(PresencaModel presenca);
-        Task<ResponseModel<PresencaModel>> DeletePresenca(int id);
-        Task<ResponseModel<ColaboradorModel>> AddColaborador(int colaboradorId, int presencaId);
-        Task<ResponseModel<ColaboradorModel>> RemoveColaborador(int colaboradorId, int presencaId);
-        Task<ResponseModel<List<ColaboradorModel>>> GetAllColaboradoresInWorkshop( int workshopId);
+        Task<ServiceResponse<List<PresencaModel>>> GetAllPresencas();
+        Task<ServiceResponse<PresencaModel>> GetOnePresenca(int id);
+        Task<ServiceResponse<PresencaModel>> PutPresenca(PresencaModel presenca);
+        Task<ServiceResponse<PresencaModel>> DeletePresenca(int id);
+        Task<ServiceResponse<ColaboradorModel>> AddColaborador(int colaboradorId, int presencaId);
+        Task<ServiceResponse<ColaboradorModel>> RemoveColaborador(int colaboradorId, int presencaId);
+        Task<ServiceResponse<List<ColaboradorModel>>> GetAllColaboradoresInWorkshop( int workshopId);
 
     }
 }

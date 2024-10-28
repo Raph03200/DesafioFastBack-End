@@ -8,10 +8,10 @@ namespace DesafioFast.Interfaces
 {
     public interface WorkshopInterface
     {
-        Task<ResponseModel<List<WorkshopModel>>> GetAllWorkshops();
-        Task<ResponseModel<WorkshopModel>> GetOneWorkshop( int id);
-        Task<ResponseModel<WorkshopModel>> PostWorkshop( WorkshopModel workshop);
-        Task<ResponseModel<WorkshopModel>> PutWorkshop( WorkshopModel workshop );
-        Task<ResponseModel<WorkshopModel>> DeleteWorkshop( int id);
+        Task<ServiceResponse<List<WorkshopModel>>> GetAllWorkshops();
+        Task<ServiceResponse<WorkshopModel>> GetOneWorkshop( int id);
+        Task<ServiceResponse<WorkshopModel>> PostWorkshop( WorkshopModel workshop);
+        Task<ServiceResponse<WorkshopModel>> PutWorkshop( WorkshopModel workshop );
+        Task<ServiceResponse<WorkshopModel>> DeleteWorkshop( int id);
     }
 }

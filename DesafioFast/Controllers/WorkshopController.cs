@@ -20,7 +20,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<List<WorkshopModel>> response = await _workshopInterface.GetAllWorkshops();
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -32,7 +32,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<WorkshopModel> response = await _workshopInterface.PostWorkshop(workshop);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -44,7 +44,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<WorkshopModel> response = await _workshopInterface.GetOneWorkshop(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -56,7 +56,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<WorkshopModel> response = await _workshopInterface.PutWorkshop(updateWorkshop);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -68,7 +68,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<WorkshopModel> response = await _workshopInterface.DeleteWorkshop(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }

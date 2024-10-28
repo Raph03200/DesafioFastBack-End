@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFast\\DesafioFast.csproj": {}
+    "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFastBack-End\\Desafiofast\\DesafioFast.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFast\\DesafioFast.csproj": {
+    "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFastBack-End\\Desafiofast\\DesafioFast.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFast\\DesafioFast.csproj",
+        "projectUniqueName": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFastBack-End\\Desafiofast\\DesafioFast.csproj",
         "projectName": "DesafioFast",
-        "projectPath": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFast\\DesafioFast.csproj",
+        "projectPath": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFastBack-End\\Desafiofast\\DesafioFast.csproj",
         "packagesPath": "C:\\Users\\rapha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFast\\obj\\",
+        "outputPath": "C:\\Users\\rapha\\OneDrive\\Área de Trabalho\\Codes\\Desafio Fast\\DesafioFastBack-End\\Desafiofast\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rapha\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -56,8 +56,14 @@
               "version": "[9.0.0-rc.2.24474.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0-rc.2.24474.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.9.0, )"
             }
           },
           "imports": [

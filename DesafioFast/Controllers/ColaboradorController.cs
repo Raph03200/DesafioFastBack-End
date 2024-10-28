@@ -20,7 +20,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<List<ColaboradorModel>> response = await _colaboradorInterface.GetAllColaboradores();
             
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -32,7 +32,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _colaboradorInterface.PostColaborador(colaborador);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -44,7 +44,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _colaboradorInterface.GetOneColaborador(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -56,7 +56,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _colaboradorInterface.PutColaborador(updateColaborador);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
@@ -68,7 +68,7 @@ namespace DesafioFast.Controllers
         {
             ServiceResponse<ColaboradorModel> response = await _colaboradorInterface.DeleteColaborador(id);
 
-            if (!response.IsSuccess)
+            if (!response.Sucesso)
             {
                 return BadRequest(response);
             }
